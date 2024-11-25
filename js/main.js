@@ -88,16 +88,16 @@ function mostrarCarrito() {
     
     Para ello disponemos ya del HTML y el CSS prearmado. Entonces desde JavaScript deberemos:
 
-    1. Almacenar nuestros datos en un objeto e imprimir el nombre del grupo en la consola y en el nav:
+    DONE 1. Almacenar nuestros datos en un objeto e imprimir el nombre del grupo en la consola y en el nav:
         <div class="nombreGrupo"></div>
 
-    2. Crear un array de objetos a partir de las frutas de la carpeta img (o de los elementos que prefieran, temática libre)
+    DONE 2. Crear un array de objetos a partir de las frutas de la carpeta img (o de los elementos que prefieran, temática libre)
 
-    3. Imprimir esos objetos por pantalla, deberemos agregar esa funcion a la funcion inicializadora
+    DONE 3. Imprimir esos objetos por pantalla, deberemos agregar esa funcion a la funcion inicializadora
 
     4. OPCIONAL 1 / Realizar una función filtro que mediante un evento como keyup recoja los datos del input y filtre los productos que contengan esos valores
 
-    5. OPCIONAL 2 / Realizar la funcionalidad de carrito
+    DONE 5. OPCIONAL 2 / Realizar la funcionalidad de carrito
 
     6. OPCIONAL 3 / Hacer que esa memoria sea persistente guardando los elementos del carrito en localStorage
 
@@ -111,16 +111,16 @@ function mostrarCarrito() {
     Escriban acá su razonamiento y explicación de todo tu proceso
 */
 
-/*  PREGUNTA 2_____________
+/*  DONE  ---- PREGUNTA 2_____________
     Elaboren un array de objetos con las 10 frutas de la carpeta imágenes (o el producto que hayamos colocado ahí)
     Deben tener como claves: id, nombre, precio y la ruta de la imagen
 */
 
-/*  PREGUNTA 3_____________ lo hacemos nosotros, con innerHTML y x consola
+/*  DONE  ---- PREGUNTA 3_____________ 
     Agreguen a la funcion inicializadora init() una función para imprimir nombre del grupo en el nav y en la consola.
 */
 
-/*  PREGUNTA 4_____________
+/*  DONE  ---- PREGUNTA 4_____________
     Creen una función para imprimir en pantalla los productos del array de objetos y agreguenla a la funcion inicializadora
     El html que deben agregar debe tener el siguiente esquema (para que se apliquen los estilos)
 
@@ -136,7 +136,7 @@ function mostrarCarrito() {
     Escriban una función filtro, por ejemplo, asociada a un evento keyup, que recoja los valores del campo input y ejecute con cada evento un filtro que actualice los productos
 */
 
-/*  OPCIONAL / PREGUNTAS 6 y 7_____________
+/* DONE  ----  OPCIONAL / PREGUNTAS 6 y 7_____________
 
     1. Elaboren la funcionalidad de carrito. Agreguen funcionalidad al boton de cada producto para introducir ese elemento en un contenedor de carrito e imprimirlo en el listado con id "cart-items"" del HTML
 
@@ -153,11 +153,16 @@ function mostrarCarrito() {
 // Funcion inicializadora
 
 function init() {
-  console.log("hola");
   // Acá irían las funciones de arranque de la aplicación. No se olviden de invocar esta app
   console.log(prodFruteria.length);
   console.table(prodFruteria);
   console.log(prodFruteria);
   mostrarProductos(prodFruteria);
+
+  //Insertar nombre del grupo en el nav//
+  const nombreGrupo = document.querySelector(".nombreGrupo");
+  const grupo = "Maria Soledad Escobar y Kevin Matsuda";
+  console.log("El nombre del grupo es: ", grupo);
+  nombreGrupo.innerHTML = `<p>${grupo}</p>`;
 }
 init();
