@@ -111,7 +111,8 @@ function mostrarProductos(array) {
 
     - Primero generamos un div que aloje todos los elemntos necesarios para el filtrado, en este caso, nombre y precios
     - Luego accedemos a la información ingresada por el usuario y con la función filtrarProductos realizamos la lógica
-    del filtrado de los productos
+    del filtrado de los productos, obtenemos los datos del nombre y los precios, chequeamos que productos cumplen con esos 
+    filtros y generamos un nuevo array
     -finalmente llamamos a mostrarProductos y le pasamos el array de productos que cumplen con los filtros solicitados
 
 */
@@ -168,18 +169,34 @@ function mostrarCarrito() {
     carritoCompra += `
     <li class="item-block">
         <p class="item-name">${producto.nombre} - ${producto.precio}</p>
-        <button class="delete-button">Eliminar</button>
+        <button class="delete-button" onClick="eliminarProducto(${producto.nombre})>Eliminar</button>
     </li>
     `;
   });
 
   objetosCarrito.innerHTML = carritoCompra;
+  guardarCarrito();
 }
+
 
 /*  OPCIONAL 3 / Pregunta 6____________
     Hacer que esa memoria sea persistente guardando los elementos del carrito en localStorage
 
 */
+
+//Guardo los elementos del carrito en localStorage//
+function guardarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+//Para visualizar la persistencia debo poder cargar la página y traer, si hay, el carrito desde localStorage
+function cargarCarrito() {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado); 
+    mostrarCarrito();
+  }
+}
 
 // Funcion inicializadora//
 function init() {
@@ -188,6 +205,7 @@ function init() {
   console.table(prodFruteria);
   console.log(prodFruteria);
   mostrarProductos(prodFruteria);
+  cargarCarrito();
 
   //Insertar nombre del grupo en el nav//
   const nombreGrupo = document.querySelector(".nombreGrupo");
