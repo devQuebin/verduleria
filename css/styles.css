@@ -149,3 +149,19 @@ a {
   font-size: 1.2rem;
   text-align: right;
 }
+
+.filter-section {
+  display: inline-flex;
+  margin-bottom: 1%;
+}
+
+.filter-section input {
+  padding: 1%;
+  margin-right: 1%;
+}
+
+.filter-section button {
+  border: none;
+  background-color: #218838;
+  color: white;
+}
