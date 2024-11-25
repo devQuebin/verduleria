@@ -10,7 +10,7 @@ let barraBusqueda = document.querySelector(".search-bar");
 
 let botonesCarrito = document.querySelectorAll(".add-to-cart");
 let objetosCarrito = document.getElementById("cart-items");
-let precioCarrito = document.getElementById("total-prize");
+let precioCarrito = document.getElementById("total-price");
 let contadorCarrito = document.getElementById("cart-count");
 // let nombreGrupo = document.querySelector("");
 let carrito = [];
@@ -157,8 +157,16 @@ function agregarCarrito(id) {
   console.log("carrito actualizado", carrito);
 
   mostrarCarrito();
+  guardarCarrito();
 }
 
+//Opcionalmente agrego la funcionalidad al botón eliminar del carrito de compras
+function eliminarProducto(indice) {
+  carrito.splice(indice, 1);
+
+  mostrarCarrito();
+  guardarCarrito();
+}
 
 //Función mostrar carrito de compras//
 function mostrarCarrito() {
@@ -169,12 +177,15 @@ function mostrarCarrito() {
     carritoCompra += `
     <li class="item-block">
         <p class="item-name">${producto.nombre} - ${producto.precio}</p>
-        <button class="delete-button" onClick="eliminarProducto(${producto.nombre}")>Eliminar</button>
+        <button class="delete-button" onclick="eliminarProducto(${indice})">Eliminar</button>
     </li>
     `;
+    // Suma el precio para el total
+    precioTotal += producto.precio; 
   });
 
   objetosCarrito.innerHTML = carritoCompra;
+  precioCarrito.textContent = `Total: $${precioTotal}`;
   guardarCarrito();
 }
 
@@ -204,7 +215,9 @@ function init() {
   console.log(prodFruteria.length);
   console.table(prodFruteria);
   console.log(prodFruteria);
+
   mostrarProductos(prodFruteria);
+
   cargarCarrito();
 
   //Insertar nombre del grupo en el nav//
