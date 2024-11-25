@@ -169,7 +169,7 @@ function mostrarCarrito() {
     carritoCompra += `
     <li class="item-block">
         <p class="item-name">${producto.nombre} - ${producto.precio}</p>
-        <button class="delete-button" onClick="eliminarProducto(${producto.nombre})>Eliminar</button>
+        <button class="delete-button" onClick="eliminarProducto(${producto.nombre}")>Eliminar</button>
     </li>
     `;
   });
